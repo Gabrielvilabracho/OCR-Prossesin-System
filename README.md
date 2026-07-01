@@ -1,76 +1,132 @@
-# AI Invoice Processing
+# OCR Processing System
 
-AI Invoice Processing is a docs-first monorepo for building, testing, and operating invoice-processing automation with Trigger.dev, Python analytics, FastAPI/LangGraph services, and Supabase-backed contracts.
+An end-to-end reference system for extracting, validating, and reviewing invoice data with AI. The repository combines background jobs, document-processing services, evaluation tooling, and operational templates so teams can study how an OCR/AI invoice pipeline is structured beyond a single demo script.
 
-> **Public-readiness status:** this repository is being sanitized for public release. Do not switch repository visibility to public until the OpenSpec release checklist passes and the owner gives final approval.
+> This is a sanitized public release of an internal project. Client-specific history, private operational notes, local environment files, and private Git history are intentionally excluded.
 
-> **History strategy:** public release must use a fresh public export/new repository created from the sanitized current tree, not the existing private Git history. See [`docs/public-release.md`](docs/public-release.md).
+## What this project demonstrates
 
-## What is included
+- **Document ingestion** from configurable sources such as email, drive, or storage adapters.
+- **OCR and AI extraction** using a Python FastAPI/LangGraph service.
+- **Background orchestration** with Trigger.dev v4 tasks.
+- **Fiscal-data validation** for invoices, suppliers, taxes, totals, and review queues.
+- **Evaluation workflows** with synthetic/golden fixtures and analytics dashboards.
+- **Public-safe operations** with env templates, security policy, and clean-release guidance.
 
-| Area | Purpose | Commands |
+## Architecture at a glance
+
+```text
+Document source
+   -> Trigger.dev orchestration
+   -> OCR / AI extraction service
+   -> Validation + normalization
+   -> Supabase-backed contracts
+   -> Review, analytics, and export workflows
+```
+
+The repository is intentionally organized as a **docs-first monorepo**. Each major area owns its dependencies and test commands instead of relying on a single root package manager.
+
+## Repository map
+
+| Path | Purpose | Main checks |
 |---|---|---|
-| `trigger/` | Trigger.dev v4 tasks and orchestration code | `cd trigger && npm run test` |
-| `analytics/` | Python 3.12 dashboards and evaluation tooling | `cd analytics && python -m pytest -m "not integration"` |
-| `services/sample-accounting-ai/` | Sample FastAPI + LangGraph invoice-processing service. Directory name is retained for compatibility during cleanup. | `cd services/sample-accounting-ai && uv run pytest` |
-| `clients/` | Client/sample-client contracts, migrations, and docs. Public-safe content only should remain here. | Review before publishing |
-| `openspec/` | Spec-driven development artifacts | See `openspec/config.yaml` |
-| `infrastructure/`, `references/` | Read-only submodules and local infrastructure references | Do not edit as part of public cleanup |
+| `trigger/` | Trigger.dev v4 tasks, orchestration, client pipeline jobs, and TypeScript tests. | `npm run test`, `npx tsc --noEmit` |
+| `services/sample-accounting-ai/` | FastAPI + LangGraph service for OCR, extraction, validation, and persistence flows. | `uv run pytest` |
+| `analytics/` | Python dashboards, synthetic datasets, evaluation scripts, and reporting helpers. | `uv run pytest -m "not integration"` |
+| `clients/sample-accounting/` | Public-safe sample client docs, contracts, and Supabase migrations. | Manual review + contract checks |
+| `contracts/` | JSON schemas for service boundaries. | Schema review |
+| `automations/` | Automation templates and workflow notes. | Manual review |
+| `ops/` | Deployment examples for Caddy/VPS-style operations. | Manual review |
+| `templates/` | Reusable PRD, proposal, SOP, and metrics templates. | Manual review |
 
 ## Quickstart
 
-```bash
-git submodule update --init --recursive
+Clone the repository, then install and test the part you want to explore.
 
+### Trigger.dev tasks
+
+```bash
 cd trigger
 npm install
 npm run test
 npx tsc --noEmit
 ```
 
-For Python services:
+### Python analytics
 
 ```bash
 cd analytics
-python -m pytest -m "not integration"
+uv sync
+uv run pytest -m "not integration"
+```
 
-cd ../services/sample-accounting-ai
+### Python OCR / AI service
+
+```bash
+cd services/sample-accounting-ai
 uv sync --extra dev
 uv run pytest
 ```
 
 ## Configuration
 
-Use the checked-in `*.env.example` files as templates only. Real `.env` files are ignored and must never be committed.
+Use the checked-in `*.env.example` files as templates only.
 
-Placeholders intentionally use neutral values such as `<supabase-url>` and `<secret-value>` so scanners do not mistake examples for real provider keys.
+- Real `.env` files are ignored and must never be committed.
+- Example values are intentionally neutral placeholders.
+- Provider keys, database URLs, OAuth tokens, and customer documents belong outside Git.
 
-## Verification
+Start with:
 
-Before publishing or opening large changes, run the smallest relevant checks:
-
-```bash
-git diff --check
-cd trigger && npm run test
-cd trigger && npx tsc --noEmit
-cd analytics && python -m pytest -m "not integration"
-cd services/sample-accounting-ai && uv run pytest
-bash scripts/lint-shell.sh
+```text
+env.production.example
+analytics/.env.example
+services/sample-accounting-ai/.env.example
+env/production/*.env.example
 ```
 
-## Security
+## Public release and security posture
 
-- Never commit credentials, tokens, private keys, customer documents, or reverse anonymization mappings.
-- Report security issues through the process in [`SECURITY.md`](SECURITY.md).
-- Current publication is blocked until current-tree and history scans are clean and documented.
-- Follow the clean-export checklist in [`docs/public-release.md`](docs/public-release.md) before creating any public repository.
+This repository was published from a clean export, not from the original private Git history.
+
+Before publishing a derivative or adding real data, follow the checklist in [`docs/public-release.md`](docs/public-release.md):
+
+- run secret scanning,
+- keep private history out of public remotes,
+- exclude local `.env` files,
+- avoid reverse anonymization mappings,
+- confirm docs do not expose customer-specific context.
+
+Security issues should be reported through [`SECURITY.md`](SECURITY.md).
 
 ## Development workflow
 
-Significant changes follow Spec-Driven Development:
+The original project used Spec-Driven Development for substantial changes:
 
 ```text
 proposal -> specs -> design -> tasks -> apply -> verify -> archive
 ```
 
-OpenSpec artifacts live in `openspec/changes/`. Keep changes reviewable; use chained PRs when the diff is expected to exceed 400 changed lines.
+The public export keeps the useful implementation and documentation, while private planning history was removed. For new work, keep changes small, testable, and reviewable.
+
+## Verification checklist
+
+Run the checks that match the files you changed:
+
+```bash
+git diff --check
+
+cd trigger && npm run test && npx tsc --noEmit
+cd ../analytics && uv run pytest -m "not integration"
+cd ../services/sample-accounting-ai && uv run pytest
+```
+
+For release or publication work, also run a secret scanner such as:
+
+```bash
+gitleaks dir . --redact=100
+```
+
+## License
+
+This project is released under the [MIT License](LICENSE).
