@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SampleClient",
+  "description": "Public-safe fictional client record used for documentation examples.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "display_name", "contact_email"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "examples": ["00000000-0000-4000-8000-000000000001"]
+    },
+    "display_name": {
+      "type": "string",
+      "examples": ["Example Accounting Studio"]
+    },
+    "contact_email": {
+      "type": "string",
+      "format": "email",
+      "examples": ["operations@example.com"]
+    }
+  }
+}

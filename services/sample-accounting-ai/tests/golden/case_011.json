@@ -1,0 +1,18 @@
+{
+  "meta": { "description": "Telecom invoice 23% VAT — monthly services", "math_error": false },
+  "input": {
+    "invoice_id": "e1f2a3b4-c5d6-7890-4567-890000000010",
+    "raw_text": "FATURA\nFornecedor: TelecomPT SA\nNIF: 512345678\nNúmero: FT 2026/1042\nData: 2026-04-30\nDescriçao: Serviços de telecomunicações — maio 2026\nSubtotal: 49.99\nIVA 23%: 11.50\nTotal: 61.49\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "TelecomPT SA",
+    "supplier_nif": "512345678",
+    "invoice_number": "FT 2026/1042",
+    "invoice_date": "2026-04-30",
+    "subtotal": "49.99",
+    "vat_amount": "11.50",
+    "total": "61.49",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SampleSourceMap",
+  "description": "Public-safe sample mapping between an input source and a fictional accounting client.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_type", "source_ref", "client_id"],
+  "properties": {
+    "source_type": {
+      "type": "string",
+      "enum": ["email", "storage_folder", "manual_upload"]
+    },
+    "source_ref": {
+      "type": "string",
+      "examples": ["invoices@example.com", "sample-folder-001"]
+    },
+    "client_id": {
+      "type": "string",
+      "format": "uuid",
+      "examples": ["00000000-0000-4000-8000-000000000001"]
+    }
+  }
+}

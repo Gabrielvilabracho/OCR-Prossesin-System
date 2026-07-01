@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 0% VAT — exempt services (education)",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "a3b4c5d6-e7f8-9012-6789-000000000012",
+    "raw_text": "FATURA\nFornecedor: Academia de Formação Lda\nNIF: 513456783\nNúmero: FT 2026/021\nData: 2026-03-25\nDescriçao: Formação profissional (isenta de IVA)\nSubtotal: 1500.00\nIVA 0%: 0.00\nTotal: 1500.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Academia de Formação Lda",
+    "supplier_nif": "513456783",
+    "invoice_number": "FT 2026/021",
+    "invoice_date": "2026-03-25",
+    "subtotal": "1500.00",
+    "vat_amount": "0.00",
+    "total": "1500.00",
+    "vat_rate": 0,
+    "currency": "EUR"
+  }
+}

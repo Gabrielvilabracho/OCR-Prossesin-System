@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice with NIF starting 2 — individual entrepreneur",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "f2a3b4c5-d6e7-8901-5678-900000000011",
+    "raw_text": "FATURA\nFornecedor: Maria Fernandes - ENI\nNIF: 200123459\nNúmero: FT 2026/004\nData: 2026-05-02\nDescriçao: Design gráfico — projeto Sample Accounting\nSubtotal: 2000.00\nIVA 23%: 460.00\nTotal: 2460.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Maria Fernandes - ENI",
+    "supplier_nif": "200123459",
+    "invoice_number": "FT 2026/004",
+    "invoice_date": "2026-05-02",
+    "subtotal": "2000.00",
+    "vat_amount": "460.00",
+    "total": "2460.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

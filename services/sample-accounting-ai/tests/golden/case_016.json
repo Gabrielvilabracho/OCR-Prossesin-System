@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 13% VAT — hotel accommodation",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "d6e7f8a9-b0c1-2345-9012-300000000015",
+    "raw_text": "FATURA\nFornecedor: Hotel Beira Mar SA\nNIF: 516789015\nNúmero: FT 2026/889\nData: 2026-04-10\nDescriçao: Alojamento — 5 noites\nSubtotal: 700.00\nIVA 13%: 91.00\nTotal: 791.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Hotel Beira Mar SA",
+    "supplier_nif": "516789015",
+    "invoice_number": "FT 2026/889",
+    "invoice_date": "2026-04-10",
+    "subtotal": "700.00",
+    "vat_amount": "91.00",
+    "total": "791.00",
+    "vat_rate": 13,
+    "currency": "EUR"
+  }
+}

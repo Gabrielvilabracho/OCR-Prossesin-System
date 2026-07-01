@@ -1,0 +1,18 @@
+{
+  "meta": { "description": "Invoice with math error — subtotal+vat != total", "math_error": true },
+  "input": {
+    "invoice_id": "d4e5f6a7-b8c9-0123-def0-123456789003",
+    "raw_text": "FATURA\nFornecedor: Erros e Associados SA\nNIF: 506789012\nNúmero: FT 2026/007\nData: 2026-02-28\nDescriçao: Serviços de auditoria\nSubtotal: 800.00\nIVA 23%: 184.00\nTotal: 990.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Erros e Associados SA",
+    "supplier_nif": "506789012",
+    "invoice_number": "FT 2026/007",
+    "invoice_date": "2026-02-28",
+    "subtotal": "800.00",
+    "vat_amount": "184.00",
+    "total": "990.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

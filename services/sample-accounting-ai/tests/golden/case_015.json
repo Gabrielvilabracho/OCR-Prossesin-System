@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 6% VAT — medical devices",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "c5d6e7f8-a9b0-1234-8901-200000000014",
+    "raw_text": "FATURA\nFornecedor: MedSupply Portugal Lda\nNIF: 515678902\nNúmero: FT 2026/013\nData: 2026-02-14\nDescriçao: Equipamentos médicos — kit diagnóstico\nSubtotal: 3200.00\nIVA 6%: 192.00\nTotal: 3392.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "MedSupply Portugal Lda",
+    "supplier_nif": "515678902",
+    "invoice_number": "FT 2026/013",
+    "invoice_date": "2026-02-14",
+    "subtotal": "3200.00",
+    "vat_amount": "192.00",
+    "total": "3392.00",
+    "vat_rate": 6,
+    "currency": "EUR"
+  }
+}

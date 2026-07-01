@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Rent invoice 23% VAT — commercial office space",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "b4c5d6e7-f8a9-0123-7890-100000000013",
+    "raw_text": "FATURA\nFornecedor: Imobiliária Centro SA\nNIF: 514567899\nNúmero: FT 2026/062\nData: 2026-05-01\nDescriçao: Arrendamento escritório — maio 2026\nSubtotal: 1800.00\nIVA 23%: 414.00\nTotal: 2214.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Imobiliária Centro SA",
+    "supplier_nif": "514567899",
+    "invoice_number": "FT 2026/062",
+    "invoice_date": "2026-05-01",
+    "subtotal": "1800.00",
+    "vat_amount": "414.00",
+    "total": "2214.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

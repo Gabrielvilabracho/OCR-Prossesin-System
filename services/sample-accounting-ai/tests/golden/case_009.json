@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 13% VAT — wine and spirits",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "c9d0e1f2-a3b4-5678-2345-678900000008",
+    "raw_text": "FATURA\nFornecedor: Adega do Douro Lda\nNIF: 510123457\nNúmero: FT 2026/031\nData: 2026-04-20\nDescriçao: Vinho tinto e branco — lote especial\nSubtotal: 750.00\nIVA 13%: 97.50\nTotal: 847.50\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Adega do Douro Lda",
+    "supplier_nif": "510123457",
+    "invoice_number": "FT 2026/031",
+    "invoice_date": "2026-04-20",
+    "subtotal": "750.00",
+    "vat_amount": "97.50",
+    "total": "847.50",
+    "vat_rate": 13,
+    "currency": "EUR"
+  }
+}

@@ -1,0 +1,76 @@
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: sample-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      sample-accounting-ai:
+        condition: service_healthy
+    networks:
+      - sample_ops
+
+  sample-accounting-ai:
+    # Build from the repo for Phase 2 deploys, or replace with a reviewed image tag.
+    build:
+      context: ../../services/sample-accounting-ai
+    container_name: sample-accounting-ai
+    restart: unless-stopped
+    env_file:
+      - ../../env/production/sample-accounting-ai.env
+    environment:
+      PORT: "8001"
+    expose:
+      - "8001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health', timeout=5).read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - sample_ops
+
+  analytics:
+    build:
+      context: ../../analytics
+    container_name: sample-analytics
+    restart: unless-stopped
+    profiles:
+      - analytics
+    env_file:
+      - ../../env/production/analytics.env
+    expose:
+      - "8501"
+    networks:
+      - sample_ops
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: sample-n8n
+    restart: unless-stopped
+    profiles:
+      - n8n
+    env_file:
+      - ../../env/production/n8n.env
+    volumes:
+      - n8n_data:/home/node/.n8n
+    expose:
+      - "5678"
+    networks:
+      - sample_ops
+
+networks:
+  sample_ops:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
+  n8n_data:

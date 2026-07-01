@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agencia-v1/contracts/sample-accounting/process-invoice-response",
+  "title": "ProcessInvoiceResponse",
+  "description": "Response contract from sample-accounting-ai (Python) to Trigger.dev (TS)",
+  "type": "object",
+  "required": ["status"],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "failed", "dry_run", "processing"],
+      "description": "Processing result status. 'processing' is returned when pipeline is running asynchronously."
+    },
+    "invoice_id": {
+      "type": ["string", "null"],
+      "description": "Supabase invoice UUID if persisted, null on dry_run or failure"
+    },
+    "errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

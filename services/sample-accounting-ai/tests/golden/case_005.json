@@ -1,0 +1,18 @@
+{
+  "meta": { "description": "Invoice with invalid NIF — checksum fails", "math_error": false },
+  "input": {
+    "invoice_id": "e5f6a7b8-c9d0-1234-ef01-234567890004",
+    "raw_text": "FATURA\nFornecedor: Empresa Fictícia Lda\nNIF: 123456789\nNúmero: FT 2026/011\nData: 2026-01-10\nDescriçao: Fornecimento de software\nSubtotal: 300.00\nIVA 23%: 69.00\nTotal: 369.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Empresa Fictícia Lda",
+    "supplier_nif": null,
+    "invoice_number": "FT 2026/011",
+    "invoice_date": "2026-01-10",
+    "subtotal": "300.00",
+    "vat_amount": "69.00",
+    "total": "369.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

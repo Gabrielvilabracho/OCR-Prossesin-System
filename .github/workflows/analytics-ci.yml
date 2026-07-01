@@ -1,0 +1,32 @@
+name: Analytics CI
+on:
+  pull_request:
+    paths:
+      - 'analytics/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'analytics/**'
+jobs:
+  analytics-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: analytics
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+      - name: Set up Python 3.12
+        run: uv python install 3.12
+      - name: Install dependencies
+        run: uv pip install -e ".[dev]" --system
+      - name: Lint (ruff)
+        run: python -m ruff check src tests
+      - name: Type check (mypy)
+        run: python -m mypy src/analytics
+      - name: Test (pytest)
+        run: python -m pytest -m "not integration"

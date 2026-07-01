@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice with second math error case — vat wrong percentage",
+    "math_error": true
+  },
+  "input": {
+    "invoice_id": "c1d2e3f4-a5b6-7890-4567-800000000020",
+    "raw_text": "FATURA\nFornecedor: Matemáticas Erradas Lda\nNIF: 520123450\nNúmero: FT 2026/099\nData: 2026-05-10\nDescriçao: Serviços de gestão\nSubtotal: 1000.00\nIVA 23%: 230.00\nTotal: 1250.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Matemáticas Erradas Lda",
+    "supplier_nif": "520123450",
+    "invoice_number": "FT 2026/099",
+    "invoice_date": "2026-05-10",
+    "subtotal": "1000.00",
+    "vat_amount": "230.00",
+    "total": "1250.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

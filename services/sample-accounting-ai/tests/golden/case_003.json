@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 13% VAT — intermediate goods",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "c3d4e5f6-a7b8-9012-cdef-012345678902",
+    "raw_text": "FATURA\nFornecedor: Distribuidora Central Lda\nNIF: 505678900\nNúmero: FT 2026/099\nData: 2026-03-20\nDescriçao: Material de escritório\nSubtotal: 200.00\nIVA 13%: 26.00\nTotal: 226.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Distribuidora Central Lda",
+    "supplier_nif": "505678900",
+    "invoice_number": "FT 2026/099",
+    "invoice_date": "2026-03-20",
+    "subtotal": "200.00",
+    "vat_amount": "26.00",
+    "total": "226.00",
+    "vat_rate": 13,
+    "currency": "EUR"
+  }
+}

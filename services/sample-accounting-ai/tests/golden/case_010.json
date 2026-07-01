@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice with math error — vat computed wrong",
+    "math_error": true
+  },
+  "input": {
+    "invoice_id": "d0e1f2a3-b4c5-6789-3456-789000000009",
+    "raw_text": "FATURA\nFornecedor: Contabilidade Express SA\nNIF: 511234562\nNúmero: FT 2026/022\nData: 2026-04-08\nDescriçao: Serviços contabilísticos — abril\nSubtotal: 400.00\nIVA 23%: 80.00\nTotal: 480.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Contabilidade Express SA",
+    "supplier_nif": "511234562",
+    "invoice_number": "FT 2026/022",
+    "invoice_date": "2026-04-08",
+    "subtotal": "400.00",
+    "vat_amount": "80.00",
+    "total": "480.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

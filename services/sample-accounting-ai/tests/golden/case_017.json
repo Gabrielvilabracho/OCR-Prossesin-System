@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice NIF starting 5 — collective person/association",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "e7f8a9b0-c1d2-3456-0123-400000000016",
+    "raw_text": "FATURA\nFornecedor: Associação Empresarial do Norte\nNIF: 500234566\nNúmero: FT 2026/105\nData: 2026-03-01\nDescriçao: Quota associativa anual\nSubtotal: 600.00\nIVA 23%: 138.00\nTotal: 738.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Associação Empresarial do Norte",
+    "supplier_nif": "500234566",
+    "invoice_number": "FT 2026/105",
+    "invoice_date": "2026-03-01",
+    "subtotal": "600.00",
+    "vat_amount": "138.00",
+    "total": "738.00",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

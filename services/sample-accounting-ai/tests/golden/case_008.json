@@ -1,0 +1,18 @@
+{
+  "meta": { "description": "Small invoice 6% VAT — bakery supplies", "math_error": false },
+  "input": {
+    "invoice_id": "b8c9d0e1-f2a3-4567-1234-567890000007",
+    "raw_text": "FATURA SIMPLIFICADA\nFornecedor: Padaria Artesanal Lda\nNIF: 509012345\nNúmero: FS 2026/018\nData: 2026-03-12\nDescriçao: Pão e produtos de pastelaria\nSubtotal: 80.00\nIVA 6%: 4.80\nTotal: 84.80\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Padaria Artesanal Lda",
+    "supplier_nif": "509012345",
+    "invoice_number": "FS 2026/018",
+    "invoice_date": "2026-03-12",
+    "subtotal": "80.00",
+    "vat_amount": "4.80",
+    "total": "84.80",
+    "vat_rate": 6,
+    "currency": "EUR"
+  }
+}

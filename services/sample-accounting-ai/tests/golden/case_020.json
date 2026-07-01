@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 13% VAT — restaurant meal expenses",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "b0c1d2e3-f4a5-6789-3456-700000000019",
+    "raw_text": "FATURA\nFornecedor: Restaurante Tejo SA\nNIF: 519012348\nNúmero: FT 2026/241\nData: 2026-05-08\nDescriçao: Refeições de representação — conferência\nSubtotal: 320.00\nIVA 13%: 41.60\nTotal: 361.60\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Restaurante Tejo SA",
+    "supplier_nif": "519012348",
+    "invoice_number": "FT 2026/241",
+    "invoice_date": "2026-05-08",
+    "subtotal": "320.00",
+    "vat_amount": "41.60",
+    "total": "361.60",
+    "vat_rate": 13,
+    "currency": "EUR"
+  }
+}

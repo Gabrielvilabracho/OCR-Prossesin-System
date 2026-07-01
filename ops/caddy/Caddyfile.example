@@ -1,0 +1,50 @@
+# Sample Accounting Caddy example for Phase 2.
+# Replace domains, email, and auth placeholders before use.
+# Public routes are intentionally limited; analytics and n8n are protected/private.
+
+{
+  email ops@example.com
+}
+
+# PUBLIC: Python AI service API.
+# Only expose endpoints required by approved callers. Keep Trigger.dev allowlisting
+# or upstream network controls outside this example if required.
+https://ai.example.com {
+  encode zstd gzip
+
+  handle /health {
+    reverse_proxy sample-accounting-ai:8001
+  }
+
+  handle {
+    reverse_proxy sample-accounting-ai:8001
+  }
+}
+
+# PROTECTED: Analytics dashboard.
+# Analytics is optional and must not be public by default.
+https://analytics.example.com {
+  encode zstd gzip
+
+  # Placeholder only. Replace with Caddy basic_auth hashes or an approved SSO layer.
+  # basic_auth {
+  #   ops_user <bcrypt-hash>
+  # }
+
+  reverse_proxy analytics:8501
+}
+
+# PRIVATE/OPTIONAL: n8n.
+# n8n remains local/protected until its production role is approved.
+https://n8n.example.com {
+  encode zstd gzip
+
+  # Placeholder only. Prefer VPN, Tailscale, IP allowlist, or approved SSO.
+  # @private remote_ip 10.0.0.0/8 100.64.0.0/10
+  # handle @private {
+  #   reverse_proxy n8n:5678
+  # }
+  # respond "Forbidden" 403
+
+  reverse_proxy n8n:5678
+}

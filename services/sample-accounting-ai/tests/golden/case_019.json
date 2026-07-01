@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice 6% VAT — agriculture/livestock products",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "a9b0c1d2-e3f4-5678-2345-600000000018",
+    "raw_text": "FATURA\nFornecedor: Agro-Sul Cooperativa\nNIF: 518901238\nNúmero: FT 2026/077\nData: 2026-03-30\nDescriçao: Produtos agrícolas — lote março\nSubtotal: 2400.00\nIVA 6%: 144.00\nTotal: 2544.00\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Agro-Sul Cooperativa",
+    "supplier_nif": "518901238",
+    "invoice_number": "FT 2026/077",
+    "invoice_date": "2026-03-30",
+    "subtotal": "2400.00",
+    "vat_amount": "144.00",
+    "total": "2544.00",
+    "vat_rate": 6,
+    "currency": "EUR"
+  }
+}

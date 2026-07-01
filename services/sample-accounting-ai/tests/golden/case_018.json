@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "description": "Invoice with decimal cents precision — 23% VAT",
+    "math_error": false
+  },
+  "input": {
+    "invoice_id": "f8a9b0c1-d2e3-4567-1234-500000000017",
+    "raw_text": "FATURA\nFornecedor: Precisão Digital Lda\nNIF: 517890127\nNúmero: FT 2026/033\nData: 2026-04-22\nDescriçao: Licença software — plano anual\nSubtotal: 99.99\nIVA 23%: 23.00\nTotal: 122.99\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "Precisão Digital Lda",
+    "supplier_nif": "517890127",
+    "invoice_number": "FT 2026/033",
+    "invoice_date": "2026-04-22",
+    "subtotal": "99.99",
+    "vat_amount": "23.00",
+    "total": "122.99",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

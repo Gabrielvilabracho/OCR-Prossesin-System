@@ -1,0 +1,69 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+env.production
+*.env.local
+*.pem
+*.key
+secrets/
+credentials/
+
+# MCP / editor tool config (contienen API keys — no commitear)
+.mcp.json
+opencode.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+.windsurf/
+*.swp
+*.swo
+
+# Node (si se usan scripts)
+node_modules/
+dist/
+.next/
+.turbo/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs
+*.log
+logs/
+
+# Temp
+tmp/
+.tmp/
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Analytics
+analytics/.venv/
+analytics/.env
+
+# Vitest
+trigger/coverage/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Agent tooling cache
+.atl/
+
+# Golden dataset — PDFs stay local only (public repo)
+clients/sample-accounting/docs/ai/evaluations/golden-dataset/**/input.pdf
+clients/sample-accounting/docs/ai/evaluations/golden-dataset/**/input.jpg

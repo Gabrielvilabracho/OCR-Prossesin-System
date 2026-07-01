@@ -1,0 +1,20 @@
+name: Trigger.dev CI
+on:
+  pull_request:
+    paths:
+      - 'trigger/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: trigger
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: trigger/package-lock.json
+      - run: npm ci
+      - run: npm run test

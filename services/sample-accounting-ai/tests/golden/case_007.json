@@ -1,0 +1,18 @@
+{
+  "meta": { "description": "Invoice with missing NIF — supplier has no NIF field", "math_error": false },
+  "input": {
+    "invoice_id": "a7b8c9d0-e1f2-3456-0123-456789000006",
+    "raw_text": "RECIBO\nFornecedor: João Silva\nNúmero: RC 2026/003\nData: 2026-04-01\nDescriçao: Serviços de limpeza\nSubtotal: 150.00\nIVA 23%: 34.50\nTotal: 184.50\nMoeda: EUR"
+  },
+  "expected": {
+    "supplier_name": "João Silva",
+    "supplier_nif": null,
+    "invoice_number": "RC 2026/003",
+    "invoice_date": "2026-04-01",
+    "subtotal": "150.00",
+    "vat_amount": "34.50",
+    "total": "184.50",
+    "vat_rate": 23,
+    "currency": "EUR"
+  }
+}

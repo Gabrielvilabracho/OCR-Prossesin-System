@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agencia-v1/contracts/sample-accounting/process-invoice-request",
+  "title": "ProcessInvoiceRequest",
+  "description": "Request contract between Trigger.dev (TS) and sample-accounting-ai (Python)",
+  "type": "object",
+  "required": ["storage_key", "client_id"],
+  "additionalProperties": false,
+  "properties": {
+    "storage_key": {
+      "type": "string",
+      "description": "Supabase Storage key. Example: invoices/noxx/2026/05/uuid.pdf",
+      "pattern": "\\.(pdf|jpg|jpeg|png|svg|xml)$"
+    },
+    "client_id": {
+      "type": "string",
+      "description": "Supabase client UUID from facturas.noxx_clients",
+      "format": "uuid"
+    },
+    "dry_run": {
+      "type": "boolean",
+      "description": "If true, process invoice but do not persist to database",
+      "default": false
+    },
+    "mime_type": {
+      "type": ["string", "null"],
+      "description": "Optional MIME type hint for the document."
+    }
+  }
+}
