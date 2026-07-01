@@ -31,7 +31,12 @@
     "zod-to-json-schema": "^3.25.2"
   },
   "overrides": {
+    "@opentelemetry/core": "2.8.0",
+    "cookie": "0.7.0",
+    "esbuild": "0.28.1",
+    "postcss": "8.5.16",
     "protobufjs": "7.6.3",
+    "qs": "6.15.3",
     "systeminformation": "5.31.11",
     "ws": "8.21.0",
     "vite": "7.3.5"
