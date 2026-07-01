@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="180" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">OCDocs logo</title>
+  <desc id="desc">A clean document-processing logo with an OCR scan frame and the word OCDocs.</desc>
+  <rect width="720" height="180" rx="28" fill="#0f172a"/>
+  <g transform="translate(54 34)">
+    <rect x="0" y="0" width="92" height="112" rx="14" fill="#f8fafc"/>
+    <path d="M64 0v28h28" fill="#dbeafe"/>
+    <path d="M64 0v28h28" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="18" y="34" width="56" height="8" rx="4" fill="#0f172a" opacity="0.88"/>
+    <rect x="18" y="54" width="48" height="7" rx="3.5" fill="#64748b"/>
+    <rect x="18" y="72" width="56" height="7" rx="3.5" fill="#64748b"/>
+    <path d="M-10 22v-16c0-9 7-16 16-16h16" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M102 22v-16c0-9-7-16-16-16H70" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-10 90v16c0 9 7 16 16 16h16" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M102 90v16c0 9-7 16-16 16H70" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+    <line x1="-2" y1="58" x2="94" y2="58" stroke="#22d3ee" stroke-width="4" stroke-linecap="round" opacity="0.95"/>
+  </g>
+  <g fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <text x="190" y="92" font-size="58" font-weight="800" letter-spacing="-2">OCDocs</text>
+    <text x="194" y="126" font-size="20" font-weight="500" fill="#bae6fd">OCR invoice processing reference system</text>
+  </g>
+</svg>

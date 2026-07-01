@@ -1,27 +1,30 @@
-# Public Release Runbook
+# Public Export Runbook
 
-This runbook describes how to create a clean public export of `ai-invoice-processing` without exposing the private repository history or local-only metadata.
+This repository is already public. It was prepared from a clean export of `ai-invoice-processing` so the useful implementation and documentation could be shared without exposing private repository history or local-only metadata.
 
-The existing private repository remains the source of truth. Do **not** make the private repository public directly.
+Use this runbook for two purposes:
 
-## Release strategy
+- to understand how this public repository was prepared, and
+- to publish derivatives safely without carrying private history, secrets, or customer-specific context into a public remote.
+
+## Export strategy used
 
 - Create a fresh public repository from a sanitized snapshot of the current tree.
 - Do not copy `.git/`, `.codegraph/`, local `.env` files, ignored local files, or private submodule contents.
 - Do not rewrite private Git history as part of this public export path.
-- Do not publish until the owner gives final approval after verification.
+- Record owner approval and verification evidence before publishing a derivative.
 
-## Owner approval gates
+## Approval gates for derivatives
 
 - [ ] Owner confirms all suspected historical secrets were rotated, revoked, or confirmed invalid.
 - [ ] Owner confirms the sanitized current tree is the intended public baseline.
 - [ ] Owner confirms residual compatibility names and archived SDD references are acceptable or excluded from the export.
-- [ ] Owner approves creating the fresh public repository.
-- [ ] Owner approves changing the new repository visibility to public after scans pass.
+- [ ] Owner approves creating the fresh public derivative repository.
+- [ ] Owner approves changing the derivative repository visibility to public after scans pass.
 
 ## Clean export procedure
 
-Run these steps from the private repository working tree after all sanitization changes have been reviewed.
+Run these steps from the source working tree after all sanitization changes have been reviewed. For this repository, these steps describe the process that was used to create the clean public baseline; for derivatives, repeat them before creating a new public remote.
 
 1. Confirm the private repository is not being published directly:
 
@@ -52,11 +55,11 @@ Run these steps from the private repository working tree after all sanitization 
 5. Run redacted secret checks in the export directory. Prefer dedicated scanners when available:
 
    ```bash
-   gitleaks dir --redact .
+   gitleaks dir . --redact=100 --no-banner
    trufflehog filesystem --no-update --only-verified .
    ```
 
-   If those tools are unavailable, public release remains blocked until equivalent scanner evidence is produced. Never print secret values in reports.
+   If those tools are unavailable, do not publish a derivative until equivalent scanner evidence is produced. Never print secret values in reports.
 
 6. Run repository health checks that apply to exported content:
 
@@ -68,7 +71,7 @@ Run these steps from the private repository working tree after all sanitization 
    cd ../services/sample-accounting-ai && uv run pytest
    ```
 
-7. Initialize a new repository only after the checks pass and owner approval is recorded:
+7. Initialize a new derivative repository only after the checks pass and owner approval is recorded:
 
    ```bash
    git init
@@ -78,7 +81,7 @@ Run these steps from the private repository working tree after all sanitization 
 
    Review the staged file list before the first commit. Do not include `.git/`, `.codegraph/`, ignored local environment files, private submodule contents, scanner output containing values, or private delivery material.
 
-8. Create the new public remote only after final owner approval. Do not reuse the private repository remote.
+8. Create the new public remote only after final owner approval. Do not reuse a private repository remote.
 
 ## Final no-secrets/no-history checklist
 
@@ -89,8 +92,8 @@ Run these steps from the private repository working tree after all sanitization 
 - [ ] Current-tree secret scans are clean or contain only reviewed false positives.
 - [ ] Historical secret exposure is not present because the export starts from a fresh repository.
 - [ ] Public docs link only to sanitized artifacts.
-- [ ] Owner approval is recorded before the new repository is made public.
+- [ ] Owner approval is recorded before a derivative repository is made public.
 
 ## Rollback
 
-If any release check fails, delete the export directory and keep the private repository unchanged. Fix the sanitized source tree first, then create a new export from scratch.
+If any derivative release check fails, delete the export directory and keep the source repository unchanged. Fix the sanitized source tree first, then create a new export from scratch.

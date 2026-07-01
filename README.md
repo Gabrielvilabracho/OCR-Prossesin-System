@@ -1,8 +1,14 @@
 # OCR Processing System
 
-An end-to-end reference system for extracting, validating, and reviewing invoice data with AI. The repository combines background jobs, document-processing services, evaluation tooling, and operational templates so teams can study how an OCR/AI invoice pipeline is structured beyond a single demo script.
+<p align="center">
+  <img src="docs/assets/ocdocs-logo.svg" alt="OCDocs logo" width="520">
+</p>
 
-> This is a sanitized public release of an internal project. Client-specific history, private operational notes, local environment files, and private Git history are intentionally excluded.
+**OCDocs** is a public reference implementation for AI-assisted invoice processing: ingest documents, extract structured data with OCR/AI, validate fiscal fields, and prepare human review workflows.
+
+It matters because production invoice automation is more than a model call. Real systems need orchestration, contracts, evaluation, security boundaries, and operational documentation. This repository shows those pieces together in a clean, study-friendly shape.
+
+> This repository was published from a sanitized public export. Client-specific history, private operational notes, local environment files, and private Git history are intentionally excluded.
 
 ## What this project demonstrates
 
@@ -41,7 +47,7 @@ The repository is intentionally organized as a **docs-first monorepo**. Each maj
 
 ## Quickstart
 
-Clone the repository, then install and test the part you want to explore.
+Clone the repository, then install and test the part you want to explore. The monorepo has no root package manager; each major area owns its own tooling.
 
 ### Trigger.dev tasks
 
@@ -85,11 +91,11 @@ services/sample-accounting-ai/.env.example
 env/production/*.env.example
 ```
 
-## Public release and security posture
+## Public export and security posture
 
 This repository was published from a clean export, not from the original private Git history.
 
-Before publishing a derivative or adding real data, follow the checklist in [`docs/public-release.md`](docs/public-release.md):
+Before publishing a derivative, adding real data, or connecting live providers, follow the checklist in [`docs/public-release.md`](docs/public-release.md):
 
 - run secret scanning,
 - keep private history out of public remotes,
@@ -107,7 +113,7 @@ The original project used Spec-Driven Development for substantial changes:
 proposal -> specs -> design -> tasks -> apply -> verify -> archive
 ```
 
-The public export keeps the useful implementation and documentation, while private planning history was removed. For new work, keep changes small, testable, and reviewable.
+The public export keeps the useful implementation and documentation while leaving private planning history behind. For new work, keep changes small, testable, and reviewable.
 
 ## Verification checklist
 
