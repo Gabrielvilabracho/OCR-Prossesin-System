@@ -33,7 +33,7 @@ dependencies = [
     "python-multipart>=0.0.31",
     "httpx>=0.28.0",
     # Security-pinned transitive dependencies
-    "cryptography>=48.0.1",
+    "cryptography>=50.0.0",
     "PyJWT[crypto]>=2.13.0",
     "idna>=3.15",
     "langgraph-checkpoint>=4.1.1",
